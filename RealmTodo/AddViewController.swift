@@ -5,18 +5,23 @@ import UIKit
 class AddViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
-    @IBAction func tapBtn(_ sender: UIButton) {
-    }
-    
+    let todo = Todo()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
+    
+    @IBAction func tapBtn(_ sender: UIButton) {
+        //新規保存
+        todo.create(title: textField.text!)
+        
+        //テンプレート。navigationControllerを使ったときに元の画面に戻る書き方
+        self.navigationController?.popViewController(animated: true)
     }
+    
+
+
+
     
 
 }
