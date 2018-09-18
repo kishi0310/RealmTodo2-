@@ -46,5 +46,17 @@ class Todo: Object {
     }
 //    更新
 //    削除
-    
+    func delete(id: Int) {
+        //DBに接続
+        let realm = try! Realm()
+        
+        //削除するデータを所得する
+        let todo = realm.objects(Todo.self).filter("id = \(id)").first //firstで一個だけ取るという意味
+//関数を呼び出すときにこのidという引数が指定される
+        //所得したデータを削除する
+        try! realm.write {
+            realm.delete(todo!)
+            }
+        
+    }
 }
