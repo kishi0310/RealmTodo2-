@@ -48,6 +48,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.deleteRows(at: [indexPath], with:  .fade)
             
     }
-
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let id = todo.list[indexPath.row]["id"]!
+//            performsegueは画面を遷移する奴
+            performSegue(withIdentifier: "segue", sender: id)
+        }
+    
+            
 }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Segue" {
+            let addVC = segue.destination as! AddViewController
+            addVC.id = sender as! Int
+        }
+    }
 }
