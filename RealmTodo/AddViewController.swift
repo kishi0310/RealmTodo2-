@@ -10,6 +10,7 @@ class AddViewController: UIViewController {
     let todo = Todo() //インスタンス化
     override func viewDidLoad() {
         super.viewDidLoad()
+//        idが初期状態だったら（上の変数）addを表示する
         if id == Int() {
             btn.setTitle("add", for: .normal)
         } else {
@@ -24,9 +25,19 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func tapBtn(_ sender: UIButton) {
+//        テキストが空だった場合
+        if textField.text! == "" {
+//            アラートを表示してあげると親切
+            return
+        }
+        
+        if id == Int() {
         //新規保存
         todo.create(title: textField.text!)
+        } else {
         //更新処理
+        todo.update(id: id, title: textField.text!)
+        }
         
         //テンプレート。navigationControllerを使ったときに元の画面に戻る書き方
         self.navigationController?.popViewController(animated: true)

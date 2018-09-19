@@ -54,6 +54,17 @@ class Todo: Object {
         return todo!
     }
 //    更新
+    func  update(id: Int, title: String) {
+        //DBに接続
+        let realm = try! Realm()
+        //更新するデータを取得する
+        let todo = realm.objects(Todo.self).filter("id = \(id)").first
+        
+        //更新する
+        try! realm.write {
+            todo!.title = title
+        }
+    }
 //    削除
     func delete(id: Int) {
         //DBに接続
