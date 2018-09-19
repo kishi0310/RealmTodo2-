@@ -28,7 +28,7 @@ class AddViewController: UIViewController {
 //        テキストが空だった場合
         if textField.text! == "" {
 //            アラートを表示してあげると親切
-            return
+            return //returnでここで処理を終える。つまりは画面は変わらない。だからアラートで表示してあげるとなお良い。他にはcontinueとかwhile文でのbreakとかt。
         }
         
         if id == Int() {
@@ -42,9 +42,6 @@ class AddViewController: UIViewController {
         //テンプレート。navigationControllerを使ったときに元の画面に戻る書き方
         self.navigationController?.popViewController(animated: true)
     }
-    
-
-
     
 
 }
